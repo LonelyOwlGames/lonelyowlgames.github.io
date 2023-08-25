@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Tower Quest</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Cinema.html">Cinema</a></li>
+  <li><strong>dungeonClass</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/cellular.lua.html">cellular.lua</a></li>
+  <li><a href="../modules/roomClass.lua.html">roomClass.lua</a></li>
+  <li><a href="../modules/tileClass.lua.html">tileClass.lua</a></li>
+  <li><a href="../modules/procedural.html">procedural</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>dungeonClass</code></h1>
+<p>Implements dungeon generation.</p>
+<p></p>
+
+
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass.Class">dungeonclass.Class</a></td>
+	<td class="summary">List of data structures contained within.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass._createUUID">dungeonclass._createUUID ()</a></td>
+	<td class="summary">Generates a unique UUID for rooms.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass.generateRoom">dungeonclass.generateRoom ()</a></td>
+	<td class="summary">Generates a random pre-authored room.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass._getRandomRoom">dungeonclass._getRandomRoom ()</a></td>
+	<td class="summary">Returns a random room Object from dungeonClass.listOfRooms.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass._getTileByRoomID">dungeonclass._getTileByRoomID ()</a></td>
+	<td class="summary">Retrieve a tile Object from a Room id.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass._throwRoomAtDungeon">dungeonclass._throwRoomAtDungeon ()</a></td>
+	<td class="summary">"Throw" a generated room at the dungeon.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass._isValidRoomPlacement">dungeonclass._isValidRoomPlacement ()</a></td>
+	<td class="summary">Check if room placement at (x, y) is valid.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass.addRoom">dungeonclass.addRoom ()</a></td>
+	<td class="summary">Place room into dungeon at (x,y), assign the room a UUID.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass._getRoomByID">dungeonclass._getRoomByID ()</a></td>
+	<td class="summary">Returns room Object based on ID.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass._resolveOverlappingWalls">dungeonclass._resolveOverlappingWalls ()</a></td>
+	<td class="summary">Resolve overlapping wall conflicts, and place doors.</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#dungeonclass:buildDungeon">dungeonclass:buildDungeon ()</a></td>
+	<td class="summary">Starts dungeon generation.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "dungeonclass.Class"></a>
+    <strong>dungeonclass.Class</strong>
+    </dt>
+    <dd>
+    List of data structures contained within.
+
+
+    <ul>
+        <li><span class="parameter">width</span>
+         (int) width of dungeon in tiles.
+        </li>
+        <li><span class="parameter">height</span>
+         (int) height of dungeon in tiles.
+        </li>
+        <li><span class="parameter">id</span>
+         (int) a unique identifier for rooms.
+        </li>
+        <li><span class="parameter">roomCount</span>
+         (int) a count of rooms generated successfully.
+        </li>
+        <li><span class="parameter">tileCache</span>
+         (table) 2D array of room id's indexed by x, and y values.
+        </li>
+        <li><span class="parameter">sleep</span>
+         (float) value for slowing down generation for visualization.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+    Methods
+    <dl class="function">
+    <dt>
+    <a name = "dungeonclass._createUUID"></a>
+    <strong>dungeonclass._createUUID ()</strong>
+    </dt>
+    <dd>
+    Generates a unique UUID for rooms.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass.generateRoom"></a>
+    <strong>dungeonclass.generateRoom ()</strong>
+    </dt>
+    <dd>
+    Generates a random pre-authored room.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass._getRandomRoom"></a>
+    <strong>dungeonclass._getRandomRoom ()</strong>
+    </dt>
+    <dd>
+    Returns a random room Object from dungeonClass.listOfRooms.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass._getTileByRoomID"></a>
+    <strong>dungeonclass._getTileByRoomID ()</strong>
+    </dt>
+    <dd>
+    Retrieve a tile Object from a Room id.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass._throwRoomAtDungeon"></a>
+    <strong>dungeonclass._throwRoomAtDungeon ()</strong>
+    </dt>
+    <dd>
+    "Throw" a generated room at the dungeon.  If it is
+a valid placement, place the room into the dungeon.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass._isValidRoomPlacement"></a>
+    <strong>dungeonclass._isValidRoomPlacement ()</strong>
+    </dt>
+    <dd>
+    Check if room placement at (x, y) is valid.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass.addRoom"></a>
+    <strong>dungeonclass.addRoom ()</strong>
+    </dt>
+    <dd>
+    Place room into dungeon at (x,y), assign the room a UUID.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass._getRoomByID"></a>
+    <strong>dungeonclass._getRoomByID ()</strong>
+    </dt>
+    <dd>
+    Returns room Object based on ID.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonclass._resolveOverlappingWalls"></a>
+    <strong>dungeonclass._resolveOverlappingWalls ()</strong>
+    </dt>
+    <dd>
+    Resolve overlapping wall conflicts, and place doors.
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "dungeonclass:buildDungeon"></a>
+    <strong>dungeonclass:buildDungeon ()</strong>
+    </dt>
+    <dd>
+    Starts dungeon generation.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/ldoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2023-08-25 00:07:05 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

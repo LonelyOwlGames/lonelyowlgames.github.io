@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Tower Quest</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Fields">Fields</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/cellular.lua.html">cellular.lua</a></li>
+  <li><strong>dungeonClass.lua</strong></li>
+  <li><a href="../modules/roomClass.lua.html">roomClass.lua</a></li>
+  <li><a href="../modules/tileClass.lua.html">tileClass.lua</a></li>
+  <li><a href="../modules/procedural.html">procedural</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Cinema.html">Cinema</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>dungeonClass.lua</code></h1>
+<p>Dungeon Class.</p>
+<p>
+ This class handles the function and behavior of a dungeon.
+ A dungeon is considered a collections of rooms and tiles
+ that the player can traverse. Only one dungeon can exist
+ at a time.</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Author</strong>: Lonely Owl Games</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#dungeonClass:generateRandomRoom">dungeonClass:generateRandomRoom ()</a></td>
+	<td class="summary">Generates a random pre-authored room.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonClass:getRandomRoom">dungeonClass:getRandomRoom ()</a></td>
+	<td class="summary">Returns a random room Object
+ Used primarily when placing rooms into a dungoen.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonClass:getTileByRoomID">dungeonClass:getTileByRoomID ()</a></td>
+	<td class="summary">Retrieve a tile Object from a Room id.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonClass:throwRoomAtDungeon">dungeonClass:throwRoomAtDungeon (room)</a></td>
+	<td class="summary">"Throw" the generated room at the dungeon
+ We essentially throw the room at the dungeon until
+ it sticks.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dungeonClass:isValidRoomPlacement">dungeonClass:isValidRoomPlacement (room, x, y, target)</a></td>
+	<td class="summary">Does supplied room fit into the dungeon at x,y.</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#first">first</a></td>
+	<td class="summary">Builder method for dungeon generation.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "dungeonClass:generateRandomRoom"></a>
+    <strong>dungeonClass:generateRandomRoom ()</strong>
+    </dt>
+    <dd>
+    Generates a random pre-authored room.
+ Some hard coded parameters control the parameter
+ of what type of room is generated, and how often.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">object</span></span>
+        room The generated room output.
+ FIXME: Non-rectangular rooms (after select = 4) causes generation issues.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonClass:getRandomRoom"></a>
+    <strong>dungeonClass:getRandomRoom ()</strong>
+    </dt>
+    <dd>
+    Returns a random room Object
+ Used primarily when placing rooms into a dungoen.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">object</span></span>
+        Random room from listOfRooms table.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonClass:getTileByRoomID"></a>
+    <strong>dungeonClass:getTileByRoomID ()</strong>
+    </dt>
+    <dd>
+    Retrieve a tile Object from a Room id.
+ Used when trying to reference a tile with only a room id.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonClass:throwRoomAtDungeon"></a>
+    <strong>dungeonClass:throwRoomAtDungeon (room)</strong>
+    </dt>
+    <dd>
+    "Throw" the generated room at the dungeon
+ We essentially throw the room at the dungeon until
+ it sticks.  If it sticks, we copy it into the dungeon.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">room</span>
+            <span class="types"><span class="type">object</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dungeonClass:isValidRoomPlacement"></a>
+    <strong>dungeonClass:isValidRoomPlacement (room, x, y, target)</strong>
+    </dt>
+    <dd>
+    Does supplied room fit into the dungeon at x,y.
+ Checks whether the room parameter will fit into
+ the current dungeon based on its tiles.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">room</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">target</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "first"></a>
+    <strong>first</strong>
+    </dt>
+    <dd>
+    Builder method for dungeon generation.
+ recursively creates rooms, and adds them to
+ the current dungeon.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/ldoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2023-08-24 22:48:55 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
