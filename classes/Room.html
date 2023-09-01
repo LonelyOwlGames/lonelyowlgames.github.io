@@ -1,0 +1,613 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Tower Quest</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Cinema.html">Cinema</a></li>
+  <li><a href="../classes/Dungeon.html">Dungeon</a></li>
+  <li><strong>Room</strong></li>
+  <li><a href="../classes/Tile.html">Tile</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/cellular.lua.html">cellular.lua</a></li>
+  <li><a href="../modules/procedural.html">procedural</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Room</code></h1>
+<p>Implements Room Objects for room accretion.</p>
+<p> Room objects are
+ containers of tile data, with special behavior for generation.
+</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">Room()
+</pre>
+    </ul>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: Creative Commons Attribution 4.0 International License</li>
+        <li><strong>Author</strong>: LonelyOwl</li>
+    </ul>
+
+
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#room.Class">room.Class</a></td>
+	<td class="summary">List of data structures contained within.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#room._createRoomBuffer">room._createRoomBuffer ()</a></td>
+	<td class="summary">Creates a room buffer (hash map) for tile manipulation.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room.connectTo">room.connectTo ()</a></td>
+	<td class="summary">A function for pushing ids to Room.connectedRooms</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#room:setPosition">room:setPosition (x, y)</a></td>
+	<td class="summary">Set world position of room, and update tile (wx, wy) positions.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:getRoomWidth">room:getRoomWidth (excludeEmpties)</a></td>
+	<td class="summary">Return room width by largest x-value of contained tiles.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:getRoomHeight">room:getRoomHeight (excludeEmpties)</a></td>
+	<td class="summary">Return room height by largest h-value of contained tiles.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:getRoomDimensions">room:getRoomDimensions (excludeEmpties)</a></td>
+	<td class="summary">A function for getting width & height.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:getPosition">room:getPosition ()</a></td>
+	<td class="summary">A function for getting the (x, y) position of a room.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:generateSquareRoom">room:generateSquareRoom (width, height)</a></td>
+	<td class="summary">Generate a square room</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:generateCircleRoom">room:generateCircleRoom (radius)</a></td>
+	<td class="summary">Generate a circular room given a radius.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:generateCARoom">room:generateCARoom (width, height, ...)</a></td>
+	<td class="summary">Generate a Cellular Automata blob</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:setTile">room:setTile (x, y, type)</a></td>
+	<td class="summary">Set the type of a tile at local x, y position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:getSerializedRoomTiles">room:getSerializedRoomTiles ()</a></td>
+	<td class="summary">Iterates over all tiles inside room, and serializes those tiles for output.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:getTile">room:getTile (x, y)</a></td>
+	<td class="summary">Returns a tile Object based on local (x, y) position.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:getTileByWorld">room:getTileByWorld (wx, wy)</a></td>
+	<td class="summary">Returns a tile Object based on world (x, y) position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:setNeighbors">room:setNeighbors ()</a></td>
+	<td class="summary">Populate tile neighbors on tile Object for later reference.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:addWallsToRoom">room:addWallsToRoom ()</a></td>
+	<td class="summary">Iterates over every tile in a room, and assigns empty cells
+ to wall cells if they're neighbored by floor cells.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:assignRoomIds">room:assignRoomIds (id)</a></td>
+	<td class="summary">Used after a room is generated.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:createRoomFromTable">room:createRoomFromTable (width, height, table)</a></td>
+	<td class="summary">Creates a room object from a list of tiles.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#room:serialize">room:serialize ()</a></td>
+	<td class="summary">Serialization of room, and tiles consequentially.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "room.Class"></a>
+    <strong>room.Class</strong>
+    </dt>
+    <dd>
+    List of data structures contained within.
+
+
+    <ul>
+        <li><span class="parameter">x</span>
+         (int) x world position of room. (top left corner)
+        </li>
+        <li><span class="parameter">y</span>
+         (int) y world position of room. (top left corner)
+        </li>
+        <li><span class="parameter">dungeon</span>
+         (int) id of dungeon the room belongs to.
+        </li>
+        <li><span class="parameter">connectedRooms</span>
+         (table) a list of connected rooms indexed by id.
+        </li>
+        <li><span class="parameter">tiles</span>
+         (table) List of tile objects in room.
+        </li>
+        <li><span class="parameter">tileCache</span>
+         (table) 2D array of tile ids indexed by local x, y position.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+    Methods
+    <dl class="function">
+    <dt>
+    <a name = "room._createRoomBuffer"></a>
+    <strong>room._createRoomBuffer ()</strong>
+    </dt>
+    <dd>
+    Creates a room buffer (hash map) for tile manipulation.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room.connectTo"></a>
+    <strong>room.connectTo ()</strong>
+    </dt>
+    <dd>
+    A function for pushing ids to Room.connectedRooms
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "room:setPosition"></a>
+    <strong>room:setPosition (x, y)</strong>
+    </dt>
+    <dd>
+    Set world position of room, and update tile (wx, wy) positions.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:getRoomWidth"></a>
+    <strong>room:getRoomWidth (excludeEmpties)</strong>
+    </dt>
+    <dd>
+    Return room width by largest x-value of contained tiles.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">excludeEmpties</span>
+            <span class="types"><span class="type">boolean</span></span>
+         whether to include empty tiles in calculation.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:getRoomHeight"></a>
+    <strong>room:getRoomHeight (excludeEmpties)</strong>
+    </dt>
+    <dd>
+    Return room height by largest h-value of contained tiles.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">excludeEmpties</span>
+            <span class="types"><span class="type">boolean</span></span>
+         whether to include empty tiles in calculation.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:getRoomDimensions"></a>
+    <strong>room:getRoomDimensions (excludeEmpties)</strong>
+    </dt>
+    <dd>
+    A function for getting width & height.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">excludeEmpties</span>
+            <span class="types"><span class="type">boolean</span></span>
+         whether empty tiles should be counted.
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <li><a href="../classes/Room.html#room:getRoomWidth">getRoomWidth</a></li>
+         <li><a href="../classes/Room.html#room:getRoomHeight">getRoomHeight</a></li>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "room:getPosition"></a>
+    <strong>room:getPosition ()</strong>
+    </dt>
+    <dd>
+    A function for getting the (x, y) position of a room.
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../classes/Room.html#room:setPosition">setPosition</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "room:generateSquareRoom"></a>
+    <strong>room:generateSquareRoom (width, height)</strong>
+    </dt>
+    <dd>
+    Generate a square room
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+
+        </li>
+        <li><span class="parameter">height</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:generateCircleRoom"></a>
+    <strong>room:generateCircleRoom (radius)</strong>
+    </dt>
+    <dd>
+    Generate a circular room given a radius.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">radius</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:generateCARoom"></a>
+    <strong>room:generateCARoom (width, height, ...)</strong>
+    </dt>
+    <dd>
+    Generate a Cellular Automata blob
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+
+        </li>
+        <li><span class="parameter">height</span>
+
+        </li>
+        <li><span class="parameter">...</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:setTile"></a>
+    <strong>room:setTile (x, y, type)</strong>
+    </dt>
+    <dd>
+    Set the type of a tile at local x, y position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">type</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:getSerializedRoomTiles"></a>
+    <strong>room:getSerializedRoomTiles ()</strong>
+    </dt>
+    <dd>
+    Iterates over all tiles inside room, and serializes those tiles for output.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:getTile"></a>
+    <strong>room:getTile (x, y)</strong>
+    </dt>
+    <dd>
+    Returns a tile Object based on local (x, y) position.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:getTileByWorld"></a>
+    <strong>room:getTileByWorld (wx, wy)</strong>
+    </dt>
+    <dd>
+    Returns a tile Object based on world (x, y) position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">wx</span>
+
+        </li>
+        <li><span class="parameter">wy</span>
+        convert world to local
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:setNeighbors"></a>
+    <strong>room:setNeighbors ()</strong>
+    </dt>
+    <dd>
+    Populate tile neighbors on tile Object for later reference.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:addWallsToRoom"></a>
+    <strong>room:addWallsToRoom ()</strong>
+    </dt>
+    <dd>
+    Iterates over every tile in a room, and assigns empty cells
+ to wall cells if they're neighbored by floor cells.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:assignRoomIds"></a>
+    <strong>room:assignRoomIds (id)</strong>
+    </dt>
+    <dd>
+    Used after a room is generated.  Set the roomid property of all
+ tiles in the room to the corresponding room.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:createRoomFromTable"></a>
+    <strong>room:createRoomFromTable (width, height, table)</strong>
+    </dt>
+    <dd>
+    Creates a room object from a list of tiles.
+ Needed because some generation algorithms
+ like CA will output its result into a single
+ dimension table instead of a 2D array of tiles.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+
+        </li>
+        <li><span class="parameter">height</span>
+
+        </li>
+        <li><span class="parameter">table</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "room:serialize"></a>
+    <strong>room:serialize ()</strong>
+    </dt>
+    <dd>
+    Serialization of room, and tiles consequentially.
+ Serialization data: {key = id, value = {serializedTileData}}
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/ldoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2023-09-01 08:42:48 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

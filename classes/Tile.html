@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Tower Quest</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Cinema.html">Cinema</a></li>
+  <li><a href="../classes/Dungeon.html">Dungeon</a></li>
+  <li><a href="../classes/Room.html">Room</a></li>
+  <li><strong>Tile</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/cellular.lua.html">cellular.lua</a></li>
+  <li><a href="../modules/procedural.html">procedural</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Tile</code></h1>
+<p>Implements tile Objects which are data containers for important
+ map information need for room generation and room accretion.</p>
+<p></p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">Tile()
+</pre>
+    </ul>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: Creative Commons Attribution 4.0 International License</li>
+        <li><strong>Author</strong>: LonelyOwl</li>
+    </ul>
+
+
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#tile.Class">tile.Class</a></td>
+	<td class="summary">List of data structures contained within.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#tile._createUUID">tile._createUUID ()</a></td>
+	<td class="summary">Create unique id string for tiles created.</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#tile:setType">tile:setType (type)</a></td>
+	<td class="summary">Accessor function for setting tile type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:setLocalPosition">tile:setLocalPosition (x, y)</a></td>
+	<td class="summary">Accessor function for setting tile's position in room.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:setWorldPosition">tile:setWorldPosition (x, y)</a></td>
+	<td class="summary">Accessor function for setting tile's position in world.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:setProperty">tile:setProperty (property, value)</a></td>
+	<td class="summary">Accessor function for setting any property of a tile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:hasProperty">tile:hasProperty (property)</a></td>
+	<td class="summary">Returns a boolean on whether a tile has the specified property or not.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:getProperty">tile:getProperty (property)</a></td>
+	<td class="summary">Returns the specified property value defined, or false.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:getType">tile:getType (compare)</a></td>
+	<td class="summary">Accessor function to return a tiles type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:getLocalPosition">tile:getLocalPosition ()</a></td>
+	<td class="summary">Returns local room position of a tile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:getWorldPosition">tile:getWorldPosition ()</a></td>
+	<td class="summary">Returns the world position of a tile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:createTile">tile:createTile (room, x, y, type)</a></td>
+	<td class="summary">Builder function for tile instances.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:deserialize">tile:deserialize (...)</a></td>
+	<td class="summary">Not implemented.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tile:serialize">tile:serialize ()</a></td>
+	<td class="summary">Called by room serialize method, or directly.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "tile.Class"></a>
+    <strong>tile.Class</strong>
+    </dt>
+    <dd>
+    List of data structures contained within.
+
+
+    <ul>
+        <li><span class="parameter">id</span>
+         (string) Unique id for every tile created.
+        </li>
+        <li><span class="parameter">roomid</span>
+         (string) Unique id of the room the tile belongs to.
+        </li>
+        <li><span class="parameter">dungeon</span>
+         (string) Unique id of the dungeon the tile belongs to.
+        </li>
+        <li><span class="parameter">x</span>
+         (int) local room position of tile.
+        </li>
+        <li><span class="parameter">y</span>
+         (int) local room position of tile.
+        </li>
+        <li><span class="parameter">wx</span>
+         (int) world position of tile.
+        </li>
+        <li><span class="parameter">wy</span>
+         (int) world position of tile.
+        </li>
+        <li><span class="parameter">type</span>
+         (string) tile type used for discerning.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+    Methods
+    <dl class="function">
+    <dt>
+    <a name = "tile._createUUID"></a>
+    <strong>tile._createUUID ()</strong>
+    </dt>
+    <dd>
+    Create unique id string for tiles created.
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "tile:setType"></a>
+    <strong>tile:setType (type)</strong>
+    </dt>
+    <dd>
+    Accessor function for setting tile type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:setLocalPosition"></a>
+    <strong>tile:setLocalPosition (x, y)</strong>
+    </dt>
+    <dd>
+    Accessor function for setting tile's position in room.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:setWorldPosition"></a>
+    <strong>tile:setWorldPosition (x, y)</strong>
+    </dt>
+    <dd>
+    Accessor function for setting tile's position in world.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:setProperty"></a>
+    <strong>tile:setProperty (property, value)</strong>
+    </dt>
+    <dd>
+    Accessor function for setting any property of a tile.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">property</span>
+
+        </li>
+        <li><span class="parameter">value</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:hasProperty"></a>
+    <strong>tile:hasProperty (property)</strong>
+    </dt>
+    <dd>
+    Returns a boolean on whether a tile has the specified property or not.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">property</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:getProperty"></a>
+    <strong>tile:getProperty (property)</strong>
+    </dt>
+    <dd>
+    Returns the specified property value defined, or false.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">property</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:getType"></a>
+    <strong>tile:getType (compare)</strong>
+    </dt>
+    <dd>
+    Accessor function to return a tiles type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">compare</span>
+         if comparison is given, return boolean instead.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:getLocalPosition"></a>
+    <strong>tile:getLocalPosition ()</strong>
+    </dt>
+    <dd>
+    Returns local room position of a tile.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:getWorldPosition"></a>
+    <strong>tile:getWorldPosition ()</strong>
+    </dt>
+    <dd>
+    Returns the world position of a tile.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:createTile"></a>
+    <strong>tile:createTile (room, x, y, type)</strong>
+    </dt>
+    <dd>
+    Builder function for tile instances.  Only accepts local (x,y) values.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">room</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">type</span>
+
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="function-name">Tile</span>():<span class="function-name">createTile</span>(object room, int x, int y, <span class="global">string</span> <span class="global">type</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "tile:deserialize"></a>
+    <strong>tile:deserialize (...)</strong>
+    </dt>
+    <dd>
+    Not implemented.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tile:serialize"></a>
+    <strong>tile:serialize ()</strong>
+    </dt>
+    <dd>
+    Called by room serialize method, or directly.  Serializes
+ tile data by generating an array without any userData values.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/ldoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2023-09-01 08:42:48 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
